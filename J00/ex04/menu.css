@@ -1,0 +1,50 @@
+body {
+    background-color: rgb(219, 219, 219);
+}
+
+ul {
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    font-size: 18px;
+    list-style-type: none;
+    width: 200px;
+    border: 2px solid black;
+    align-items: center;
+}
+
+li.first {
+    display: block;
+    height: 50px;
+    background-color: rgb(180, 180, 180);
+}
+
+ul:hover li.first{
+    background-color: rgb(91, 238, 238);
+}
+
+a:hover {
+    background-color: rgb(180, 180, 180);
+}
+
+li a, li.first{
+    text-align: center;
+    height: 50px;
+    align-content: center;
+}
+
+ul:hover li a{
+    display: block;
+
+    border-top: 2px solid black;
+}
+
+ul li a {
+    display: none;
+
+
+    background-color: gray;
+    color: rgb(91, 238, 238);
+    text-decoration: none;
+
+}

@@ -1,0 +1,149 @@
+body {
+    background-color: #505050;
+    margin: 18px 0 0 8px;
+}
+
+.screen {
+    position: relative;
+    margin: 0 auto;
+    width: 1420px;
+}
+
+header, .gauche, .ecole, .droite {
+    background-color: #909090;    
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px black;
+}
+
+header {
+    position: relative;
+    height: 137px;
+    width: 1420px;
+}
+
+.gauche {
+    position: relative;
+    float: left;
+    margin: 20px 0 0 30px;
+    padding: 15px 0 0 32px;
+    width: 108px;
+    height: 410px;
+}
+
+.ecole {
+    position: relative;
+    float: left;
+    margin: 20px 0 0 30px;
+    width: 1020px;
+    height: 582px;
+}
+
+.droite {
+    position: relative;
+    float: left;
+    margin: 20px 0 0 30px;
+    padding: 15px 0 0 32px;
+    width: 108px;
+    height: 410px;
+}
+
+.texte {
+    position: absolute;
+    width: 500px;
+    height: 150px;
+    background-color: #88FF89;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px black;
+    top: 663px;
+    left: -45px;
+    font-family: arial;
+    letter-spacing: 1px;
+    font-size: 16px; 
+    padding: 10px;
+}
+
+.gros {
+    font-family: Times;
+    font-size: 31px;
+}
+
+.surligner {
+        text-shadow: 5px 5px 5px red;
+}
+
+input[type=text] {
+    width: 376px;
+    border: 2px solid #9A9C9B;
+    border-bottom-color: #EEEEEE;
+    border-right-color: #EEEEEE;
+    margin-left: 2px;
+}
+
+input[type=submit] {
+    border: 1px solid #9A9C9B;
+    margin-left: 4px;
+    height: 22px;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+
+header img.dotf {
+    height: 110px;
+    margin: 10px 0 0 10px;
+}
+
+header img.loupe {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+}
+
+header img.reload, header img.croix {
+    position: absolute;
+    right: 10px;
+}
+
+header img.reload {
+    height: 20px;
+    top: 10px;
+}
+
+header img.croix {
+    bottom: 10px;
+}
+
+.gauche img {
+    width: 70px;
+    margin-bottom: 6px;
+}
+
+.gauche img.selected {
+    border: 5px solid red;
+    border-radius: 5px;
+    margin: -5px 0 1px -5px;
+}
+
+.ecole img {
+    width: 1000px;
+    height: 562px;
+    margin: 10px 10px;
+}
+
+.droite img.book {
+    margin-left: 3px;
+    width: 70px;
+}
+
+.droite img.towel {
+    margin: 6px 0 0 3px;
+    width: 70px;
+}
+
+.brick {
+    background-image: url('resources/brick.jpg');
+    width: 120px;
+    height: 70px;
+    margin: 1px 0 0 -22px;
+}
+
