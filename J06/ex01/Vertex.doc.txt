@@ -1,0 +1,42 @@
+
+<- Vertex ----------------------------------------------------------------------
+La Classe Vertex comportes les coordonnées privées suivantes : $_x $_y $_z et $_w 
+ainsi qu'un Objet privé $_color de Classe Color (cf: Color.doc.txt)
+
+Une nouvelle instance ce crée avec un tableau comportant au minimum les clés "x" "y" et "z"
+new Vertex( array( 'x' => 1.0, 'y' => 2.0, 'z' => 0.0 ) );
+
+l'instance peut contenir les données de façon optionnels pour $_color et/ou $_w comme suivant : 
+$unitZ = new Vertex( array( 'x' => 0.0, 'y' => 0.0, 'z' => 1.0, 'color' => (new Color( array( 'rgb' => 255 ) ))  ) );
+$equA = new Vertex( array( 'x' => 9.0, 'y' => 9.0, 'z' => 9.0, 'w' => 3.0 ) );
+
+Par défaut, $_color aura la valeur rgb 0 (White)
+Par défaut, $_w vaudra 1.0
+
+La classe possède les méthodes suivantes accesseurs suivants :
+
+        public function getX()
+        public function setX($x)
+
+        public function getY()
+        public function setY($y)
+
+        public function getZ()
+        public function setZ($z)
+
+        public function getW()
+        public function setW($w)
+        
+        public function getColor()
+        public function setColor($color)
+
+
+L'option $verbose = true permet : 
+        - D'afficher les données de l'instance Color en paramètre
+        - D'afficher toutes les données lors de la construction et de la déconstruction
+
+Par défaut $verbose = false et n'affiche que les paramètres de cordonnées x, y, z et w.
+
+
+
+---------------------------------------------------------------------- Vertex ->
