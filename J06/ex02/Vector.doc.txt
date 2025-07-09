@@ -1,0 +1,63 @@
+
+<- Vector ----------------------------------------------------------------------
+
+-------------------- ATTRIBUTS --------------------
+
+La Classe Vector comportes les coordonnées privées suivantes : $_x $_y $_z et $_w 
+Ainsi qu'une variable static verbose par défaut = False
+
+-------------------- VERBOSE --------------------
+
+L'option $verbose = true permet : 
+    - D'afficher toutes les données lors de la construction et de la déconstruction de l'instance.
+
+Par défaut $verbose = false et n'affiche que les paramètres de cordonnées x, y, z et w.
+
+-------------------- CONSTRUCT --------------------
+
+Une nouvelle instance ce crée avec un tableau comportant les clés "dest"(obligatoire) et "orig" (optionnel)
+    -   "dest" => Un Objet de Class Vertex représentant la destination du vector.
+    -   "orig" => Un Objet de Class Vertex représentant la position d'origine du vector (par défaut orig vaudra une instance fraiche de Vertex avec x, y, z = 0).
+    ex : new Vertex( array( 'orig' => $VertexOrigine, 'dest' => $VertexDestination ) );
+
+-------------------- METHODES PUBLIQUES --------------------
+
+    -   magnitude() : retourne la longueur (ou "norme") du vecteur. (racine du total des carrés)
+
+    -   normalize() : retourne le vecteur normalisé. Si le vecteur est déja normalisé, retourne une copie fraiche du vecteur.
+
+    -   add( Vector $rhs ) : retourne le vecteur somme des deux vecteurs.
+ 
+    -   sub( Vector $rhs ) : retourne le vecteur difference des deux vecteurs. ($this - $rhs )
+
+    -    opposite() : retourne le vecteur opposé. (* -1)
+ 
+    -    scalarProduct( $k ) : retourne le produit du vecteur avec un scalaire.
+
+    -   dotProduct( Vector $rhs ) : retourne le produit scalaire de deux vecteurs.
+
+    -   cos( Vector $rhs ) : retourne le cosinus de l’angle entre deux vecteurs. (Produit scalaire de deux vecteurs / La multiplication de leurs magnitude)
+
+    -   crossProduct( Vector $rhs ) : retourne le produit en croix de deux vecteurs (repère main droite!)
+        ($this->_x) ($rhs->x)   |   ($new_x) = ($this->_y * $rhs->_z) - ($this->_z * $rhs->_y)
+        ($this->_y) ($rhs->y)   |   ($new_y) = ($this->_z * $rhs->_x) - ($this->_x * $rhs->_z)
+        ($this->_z) ($rhs->z)   |   ($new_z) = ($this->_x * $rhs->_y) - ($this->_y * $rhs->_x)
+
+
+-------------------- ACCESSEURS --------------------
+
+La classe possède les méthodes suivantes accesseurs suivants :
+
+        public function setX($x)
+        public function setY($y)
+        public function setZ($z)
+        public function setW($w)
+        public function setColor($color)
+
+
+
+
+
+
+
+---------------------------------------------------------------------- Vector ->
