@@ -1,0 +1,76 @@
+
+<- Matrix ----------------------------------------------------------------------
+
+-------------------- CONSTANTES --------------------
+    
+    const IDENTITY = "IDENTITY";
+    const SCALE = "SCALE";
+    const RX = "RX";
+    const RY = "RY";
+    const RZ = "RZ";
+    const TRANSLATION = "TRANSLATION";
+    const PROJECTION = "PROJECTION";
+
+-------------------- ATTRIBUTS --------------------
+
+private $_matrix = array(   0, 0, 0, 0, 
+                            0, 0, 0, 0, 
+                            0, 0, 0, 0, 
+                            0, 0, 0, 1);
+    private $_preset;
+    private $_scale;
+    private $_angle;
+    private $_vtc;
+    private $_fov;
+    private $_ratio;
+    private $_near;
+    private $_far;
+    static $verbose = FALSE;
+
+-------------------- VERBOSE --------------------
+
+L'option $verbose = true permet : 
+    - D'afficher toutes les données lors de la construction et de la déconstruction de l'instance.
+
+Par défaut $verbose = false et n'affiche que la matrice au format suivant :
+
+M | vtcX | vtcY | vtcZ | vtxO
+-----------------------------
+x | 0.00 | 0.00 | 0.00 | 0.00
+y | 0.00 | 0.00 | 0.00 | 0.00
+z | 0.00 | 0.00 | 0.00 | 0.00
+w | 0.00 | 0.00 | 0.00 | 1.00
+
+-------------------- CONSTRUCT --------------------
+
+Une nouvelle instance ce crée avec un tableau comportant la clé "preset" avec comme valeur une des constance de la classe nommé plus haut.
+certains preset nécessite une clé supplémentaire dans le tableau, en voici la liste exhaustive :
+    - 'preset' => "SCALE"               ;    nécessite la clé 'scale'
+    - 'preset' => "TRANSLATION"         ;    nécessite la clé 'vtc'
+    - 'preset' => "RX" || "RY" || "RZ"  ;    nécessite la clé 'angle'
+    - 'preset' => "PROJECTION"          ;    nécessite les clés 'fov', 'ratio', 'near', et 'far'
+
+
+    ex : 
+        -   new Matrix( array( 'preset' => Matrix::IDENTITY) );
+        -   new Matrix( array( 'preset' => Matrix::SCALE, 'scale' => 10.0 ) );
+        -   new Matrix( array( 'preset' => Matrix::TRANSLATION, 'vtc' => $vtc ) );
+        -   new Matrix( array( 'preset' => Matrix::RX, 'angle' => M_PI_4 ) );
+        -   new Matrix( array( 'preset' => Matrix::PROJECTION,
+						       'fov' => 60,
+						       'ratio' => 640/480,
+					           'near' => 1.0,
+					           'far' => -50.0 ) );
+
+-------------------- METHODES PUBLIQUES --------------------
+
+    -    Matrix mult( Matrix $rhs ) : retourne une nouvelle matrice résulat de la mul
+tiplication des deux matrices.
+
+    -   Vertex transformVertex( Vertex $vtx ) : retourne un nouveau vertex résul
+tat de la transformation du vertex par la matrice.
+
+
+-------------------- ACCESSEURS --------------------
+
+---------------------------------------------------------------------- Matrix ->

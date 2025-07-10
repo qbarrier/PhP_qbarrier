@@ -34,7 +34,6 @@ class Matrix {
     {
         if (isset($tab['preset']))
         {
-            echo "=========" . $tab['preset'] . "=========\n";                  ///////////////////////////////////
             $this->_preset = $tab['preset'];
             if (isset($tab['scale']))
                 $this->_scale = $tab['scale'];
@@ -164,5 +163,37 @@ class Matrix {
         $this->_matrix[15] = 0;
     }
 
+    public function mult(Matrix $rhs) {
+        $tmp =  array(  0, 0, 0, 0, 
+                        0, 0, 0, 0, 
+                        0, 0, 0, 0, 
+                        0, 0, 0, 0);
+
+        for ($i = 0; $i < 16; $i += 4)
+        {
+            for ($j = 0; $j < 4; $j++)
+            {
+                $tmp[$i + $j] = $this->_matrix[$i] * $rhs->_matrix[$j];
+                $tmp[$i + $j] += $this->_matrix[$i + 1] * $rhs->_matrix[$j + 4];
+                $tmp[$i + $j] += $this->_matrix[$i + 2] * $rhs->_matrix[$j + 8];
+                $tmp[$i + $j] += $this->_matrix[$i + 3] * $rhs->_matrix[$j + 12];
+            }
+        }
+        $new_matrix = new Matrix(array( 'preset' => Matrix::IDENTITY ) );
+        $new_matrix->_matrix = $tmp;
+        return($new_matrix);
+    }
+
+    public function transformVertex(Vertex $vtx)
+    {
+        $tmp = array();
+        $tmp['x'] = ($vtx->getX() * $this->_matrix[0]) + ($vtx->getY() * $this->_matrix[1]) + ($vtx->getZ() * $this->_matrix[2]) + ($vtx->getW() * $this->_matrix[3]);
+        $tmp['y'] = ($vtx->getX() * $this->_matrix[4]) + ($vtx->getY() * $this->_matrix[5]) + ($vtx->getZ() * $this->_matrix[6]) + ($vtx->getW() * $this->_matrix[7]);
+        $tmp['z'] = ($vtx->getX() * $this->_matrix[8]) + ($vtx->getY() * $this->_matrix[9]) + ($vtx->getZ() * $this->_matrix[10]) + ($vtx->getW() * $this->_matrix[11]);
+        $tmp['w'] = ($vtx->getX() * $this->_matrix[11]) + ($vtx->getY() * $this->_matrix[13]) + ($vtx->getZ() * $this->_matrix[14]) + ($vtx->getW() * $this->_matrix[15]);
+        $tmp['color'] = $vtx->getColor();
+        $new_vertex = new Vertex($tmp);
+        return ($new_vertex);
+    }
 
 }
