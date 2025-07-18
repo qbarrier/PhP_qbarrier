@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calc</title>
+    <style>
+        body {
+            background-color: rgb(161, 74, 255);
+        }
+
+
+
+    </style>
+    <script>
+
+    
+
+     window.onload = function () {
+        left = document.getElementById("left");
+        op = document.getElementById("op");
+        right = document.getElementById("right");
+        setInterval("alert('Please, use me...')", 30000);
+        addEventListener("submit", ft_Submit);
+
+    }
+
+    function ft_Submit() {
+        var l = Number(left.value);
+        var r = Number(right.value);
+        var res;
+
+        if (!ParseNum(l) || !ParseNum(r)) {
+            alert("Error :(");
+            return false;
+        }
+        res = ft_calc(l, r);
+        console.log(res);
+        alert(res);
+    }
+
+    function ParseNum(num) {
+        if (isNaN(num) || Math.sign(num) < 0)
+            return false
+        return true;
+    }
+
+
+    function ft_calc(l, r) {
+        switch (op.value) {
+            case "plus" :
+                return l + r;
+                break;
+            case "moins" :
+                return l - r;
+                break;
+            case "mult" :
+                return l * r;
+                break;
+            case "div" :
+                if (r === 0)
+                    return "It’s over 9000!"
+                return l / r;
+                break;
+            case "mod" :
+                if (r === 0)
+                    return "It’s over 9000!"
+                return l % r;
+                break;
+        }
+    }
+
+      
+    </script>
+</head>
+<body>
+    <div class="page">
+        <div class="calc">
+            <h1>Calculette</h1>
+            <form action="" id="form">
+                <input type="text" id="left">
+                <select id="op">
+                    <option value="plus">+</option>
+                    <option value="moins">-</option>
+                    <option value="mult">*</option>
+                    <option value="div">/</option>
+                    <option value="mod">%</option>
+                </select>
+                <input type="text" id="right">
+                <input type="submit" id="submit" value="Try me!">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
